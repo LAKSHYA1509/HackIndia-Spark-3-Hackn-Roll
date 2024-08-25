@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map with Charity Centers</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            height: 850px;
+            width: 100%;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+            position: relative;
+            top: -30px; /* Adjust this to move content up */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+    <div class="content">
+        <h3>
+            In case you can't feel like doing web3 transactions, have a look at the map to see charity centers and temples around you.
+            This will help you find places where you can donate in person.
+        </h3>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if the browser supports necessary features
+            if ('geolocation' in navigator && 'fetch' in window) {
+                // Initialize the map and set its view to the user's location
+                navigator.geolocation.getCurrentPosition(position => {
+                    const { latitude, longitude } = position.coords;
+                    const map = L.map('map').setView([latitude, longitude], 14);
+
+                    // Add OpenStreetMap tiles
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap'
+                    }).addTo(map);
+
+                    // Add a marker for the user's location
+                    L.marker([latitude, longitude]).addTo(map)
+                        .bindPopup('You are here.')
+                        .openPopup();
+
+                    // Fetch nearby charity centers and temples
+                    const fetchPlaces = async () => {
+                        try {
+                            const overpassUrl = `https://overpass-api.de/api/interpreter?data=[out:json];node(around:5000,${latitude},${longitude})[amenity~"social_facility|community_centre|ngo|place_of_worship"];out;`;
+                            const response = await axios.get(overpassUrl);
+                            const places = response.data.elements;
+
+                            places.forEach(place => {
+                                L.marker([place.lat, place.lon]).addTo(map)
+                                    .bindPopup(`${place.tags.name || 'Unnamed Place'}<br>${place.tags.amenity}`);
+                            });
+
+                            // Show alert after 5 seconds
+                            setTimeout(() => {
+                                alert('The map has loaded successfully! Your browser is compatible with Sankalp.');
+                            }, 5000);
+
+                        } catch (error) {
+                            console.error('Error fetching places:', error);
+                        }
+                    };
+
+                    fetchPlaces();
+                }, () => {
+                    alert('Your browser does not support geolocation or there was an error retrieving your location.');
+                });
+            } else {
+                alert('Your browser is currently not compatible with Sankalp.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+python -m venv venv
+
+venv\Scripts\activate
+
+pip install -r requirements.txt (Pehli baar kar rhi hai to run karna warna skip kar dena)
+
+flask run
+
+
+
+HAI NA BADHIYA!!!!!
+
+TEMPLATES KE ANDAR EK NAYA CONNECT ID AAYEGA MAP KA 

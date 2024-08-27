@@ -1,6 +1,3 @@
-Here's a `README.md` file for your project **Sankalp**:
-
-```markdown
 # Sankalp
 
 Sankalp is a Web3-based charity and donation platform built using Flask and Web3.js. The project aims to provide secure and transparent donation options through blockchain technology, allowing users to donate to various causes like Child Education, Army Support, and Communication. The platform integrates with MetaMask for wallet connection and enables transactions directly on the Ethereum blockchain.

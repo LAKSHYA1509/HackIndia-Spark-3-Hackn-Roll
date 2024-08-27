@@ -44,9 +44,9 @@ Follow the steps below to set up the project locally:
    ```bash
    flask run
    ```
+**Deployment**
 
-**Deployement**
-   The application will be available at `https://lakshya1509.pythonanywhere.com/`.
+The application will be available at [https://lakshya1509.pythonanywhere.com](https://lakshya1509.pythonanywhere.com).
 
 ## Usage
 

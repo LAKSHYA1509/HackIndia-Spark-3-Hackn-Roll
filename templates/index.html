@@ -1,292 +1,446 @@
-<html>
-  <head>
-    <title>Payment APP</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment APP-Sankalp</title>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
     <style>
-      /* Styling for the popup window */
-      #popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #ffffff;
-        padding: 20px;
-        border: 1px solid #000000;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        z-index: 9999;
-      }
-      
-      /* Style for the transparent card */
-      .card {
-        /* From https://css.glass */
-        background: rgba(135, 206, 250, 0.21);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(135, 206, 250, 0.3);
-        height:95%;
-        width: 75%;
-      }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            padding: 20px;
+            border: 1px solid #000000;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+        }
 
-      /* 5 */
-      .btn-5 {
-        width: 130px;
-        height: 40px;
-        line-height: 42px;
-        padding: 0;
-        border: none;
-        /* Updated gradient colors to blue */
-        background: rgb(0, 123, 255);
-        background: linear-gradient(0deg, rgba(0, 123, 255, 1) 0%, rgba(0, 174, 255, 1) 100%);
-      }
-      .btn-5:hover {
-        color: #f0094a;
-        background: transparent;
-        box-shadow: none;
-      }
-      .btn-5:before,
-      .btn-5:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 2px;
-        width: 0;
-        background: #f0094a;
-        box-shadow: -1px -1px 5px 0px #0000ff, 7px 7px 20px 0px #0003, 4px 4px 5px 0px #0002;
-        transition: 400ms ease all;
-      }
-      .btn-5:after {
-        right: inherit;
-        top: inherit;
-        left: 0;
-        bottom: 0;
-      }
-      .btn-5:hover:before,
-      .btn-5:hover:after {
-        width: 100%;
-        transition: 800ms ease all;
-      }
-      .custom-btn2 {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 16px;
-      color: #ffffff;
-      background-color: #007bff;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+        .card {
+            background: rgba(1, 155, 250, 0.21);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(28, 239, 24, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(9, 243, 87, 0.3);
+            height: 95%;
+            width: 75%;
+            padding: 20px;
+        }
 
-    .custom-btn2:hover {
-      background-color: #0056b3;
-    }
+        .custom-btn2 {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #4595e6;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
- 
-    </style>
-  </head>
-  <body style="background-color:#FAF0E6"><br>
-    <center>
-      <div class="card">
-        <h1>Welcome to Sankalp Payment System!</h1>
-        <button id='connectWallet' onclick=""class="custom-btn2">Connect Wallet</button>
-        <button id='getBalance' onclick="checkBalance()"class="custom-btn2">Get Balance of Wallet</button>
+        .custom-btn2:hover {
+            background-color: #0056b3;
+        }
 
-        <p id="walletAddress"></p>
-        <p id="walletBalance"></p>
+        .text_1 {
+            font-size: 50px;
+            color: #1c067f;
+            font-style: oblique;
+        }
 
-        <!-- New input fields for transfer -->
-        
-        <input type="text" id="recipientAddress" placeholder="Recipient Address" value="0x5c5e9dfed62b8c58555a094813e8ff2a8216c2be" disabled="disabled"><br><br>
-        <input type="text" id="transferAmount" placeholder="Enter Amount"style="width: 300px;
+        .btn-5 {
+            width: 130px;
+            height: 40px;
+            line-height: 42px;
+            padding: 0;
+            border: none;
+            background: rgb(0, 123, 255);
+            background: linear-gradient(0deg, rgba(0, 123, 255, 1) 0%, rgba(0, 174, 255, 1) 100%);
+            position: relative;
+            cursor: pointer;
+            color: #ffffff;
+            transition: 400ms ease all;
+        }
+
+        .btn-5:hover {
+            color: #f0094a;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .btn-5:before,
+        .btn-5:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 2px;
+            width: 0;
+            background: #f0094a;
+            box-shadow: -1px -1px 5px 0px #0000ff, 7px 7px 20px 0px #0003, 4px 4px 5px 0px #0002;
+            transition: 400ms ease all;
+        }
+
+        .btn-5:after {
+            right: inherit;
+            top: inherit;
+            left: 0;
+            bottom: 0;
+        }
+
+        .btn-5:hover:before,
+        .btn-5:hover:after {
+            width: 100%;
+            transition: 800ms ease all;
+        }
+
+        input[type="text"] {
+            width: 300px;
             height: 40px;
             padding: 15px;
             font-size: 18px;
             border-radius: 25px;
-            " ><br><br>
-        <button id='transferFunds' onclick="transferFunds()" Style="
-        display: inline-block;
-        padding: 12px 24px;
-        font-size: 16px;
-        color: #ffffff;
-        background: linear-gradient(45deg, #007bff, #00bfff);
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        ">Transfer Funds</button>
-        <p id="transferStatus"></p>
-        <p>-----OR-----</p>
-        <p>If you dont have a account</p>
-        <img src="{{ url_for('static', filename='images/QR.png') }}"  style="max-width: 150px;max-height: 150px;" alt="QR Code">
-        <p>Else, click <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">here</a>.</p>
-      </div>
+            border: 1px solid #ccc;
+        }
 
-      <!--Code for POPUP -->
-      <div id="popup">
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_6LimOm.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"    autoplay></lottie-player>
-        <h2>Transaction Details</h2>
-        <p id="popupAmount"></p>
-        <p id="popupTxId"></p>
-        <button class="custom-btn btn-5" onclick="copyTxId()">Copy</button> <!-- New button -->
-        <button class="custom-btn btn-5" onclick="closePopup()">Close</button>
-      </div>
+        .transaction-list {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(28, 239, 24, 0.1);
+        }
 
-     <!-- ... Existing HTML code ... -->
+        .transaction-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #e7f7ff;
+            border-radius: 5px;
+        }
 
-<script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+        .transaction-item p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
 
-<script type="text/javascript">
-  // Define a global variable to store the user's wallet address
-  window.userWalletAddress = null;
-  const connectWallet = document.getElementById('connectWallet');
-  const walletAddress = document.getElementById('walletAddress');
-  const walletBalance = document.getElementById('walletBalance');
-  const popup = document.getElementById('popup');
-  const popupAmount = document.getElementById('popupAmount');
-  const popupTxId = document.getElementById('popupTxId');
+        .transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
 
-  // Function to connect the wallet with MetaMask and initialize Web3
-  async function connectWalletwithMetaMask() {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
+.transaction-table th, .transaction-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
 
-      try {
-        // Request access to the user's accounts
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+.transaction-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
 
-        window.userWalletAddress = accounts[0];
-        walletAddress.innerText = window.userWalletAddress;
+    </style>
+</head>
+<body style="background-color:#c6eea5">
+    <center>
+        <div class="card">
+            <h1 class="text_1">Welcome to Sankalp Payment System!</h1>
+            <button id="connectWallet" class="custom-btn2">Connect Wallet</button>
+            <button id="getBalance" onclick="checkBalance()" class="custom-btn2">Get Balance of Wallet</button>
+        
+            <p id="walletAddress"></p>
+            <p id="walletBalance"></p>
+        
+            <span>The Charity Address:</span>
+            <input type="text" id="recipientAddress" placeholder="Recipient Address" value="0xD7f336F41D74BFAEd390BB6f8E94709F6607feAc" disabled><br><br>
+            <input type="text" id="transferAmount" placeholder="Enter Amount"><br><br>
+            <button id="transferFunds" onclick="transferFunds()" class="custom-btn2">Transfer Funds</button>
+            <p id="transferStatus"></p>
+            <p>Gas Estimate: <span id="gasEstimate">--</span></p>
+        
+            <div>
+                <p>Select Gas Fee Setting:</p>
+                <input type="radio" id="lowFee" name="gasFee" value="low" checked>
+                <label for="lowFee">Low Fee</label><br>
+                <input type="radio" id="mediumFee" name="gasFee" value="medium">
+                <label for="mediumFee">Medium Fee</label><br>
+                <input type="radio" id="highFee" name="gasFee" value="high">
+                <label for="highFee">High Fee</label><br>
+            </div>
+            
+            <p id="feeDetails">Fee Details: <span id="feeSpeed">--</span>, <span id="feeCost">--</span></p>
+        
+            <p>-----OR-----</p>
+            <p>If you don't have an account</p>
+            <img src="{{ url_for('static', filename='images/QR.png') }}" style="max-width: 150px; max-height: 150px;" alt="QR Code">
+            <p>Else, click <a href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">here</a>.</p>
+        
+            <div class="transaction-list" id="transactionList">
+                <h2>Past Transactions</h2>
+            </div>
+            
+        </div>
+        
+        <div id="popup">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_6LimOm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" autoplay></lottie-player>
+            <h2>Transaction Details</h2>
+            <p id="popupAmount"></p>
+            <p id="popupTxId"></p>
+            <button class="btn-5" onclick="copyTxId()">Copy</button>
+            <button class="btn-5" onclick="closePopup()">Close</button>
+        </div>
+        
+    </center>
 
-        connectWallet.innerText = 'Sign Out';
-        connectWallet.removeEventListener('click', connectWalletwithMetaMask);
-        setTimeout(() => {
-          connectWallet.addEventListener('click', signOutOfMetaMask);
-        }, 200);
-      } catch (error) {
-        console.error('Failed to connect to wallet:', error);
-      }
-    } else {
-      console.error('Web3 not available.');
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+
+    <script type="text/javascript">
+window.userWalletAddress = null;
+
+const connectWallet = document.getElementById('connectWallet');
+const walletAddress = document.getElementById('walletAddress');
+const walletBalance = document.getElementById('walletBalance');
+const popup = document.getElementById('popup');
+const popupAmount = document.getElementById('popupAmount');
+const popupTxId = document.getElementById('popupTxId');
+const transactionList = document.getElementById('transactionList');
+const gasEstimate = document.getElementById('gasEstimate');
+const feeSpeed = document.getElementById('feeSpeed');
+const feeCost = document.getElementById('feeCost');
+
+let gasPrices = {
+    low: { price: 0, speed: 'Slow' },
+    medium: { price: 0, speed: 'Average' },
+    high: { price: 0, speed: 'Fast' }
+};
+
+async function fetchGasPrices() {
+    try {
+        const response = await fetch('https://www.useweb3.xyz/gas');
+        const data = await response.json();
+
+        gasPrices.low.price = data.low / 10;
+        gasPrices.medium.price = data.medium / 10;
+        gasPrices.high.price = data.high / 10;
+    } catch (error) {
+        console.error('Failed to fetch gas prices:', error);
+        gasPrices = {
+            low: { price: 20, speed: 'Slow' },
+            medium: { price: 50, speed: 'Average' },
+            high: { price: 100, speed: 'Fast' }
+        };
     }
-  }
+}
 
-  // Function to sign out of MetaMask
-  function signOutOfMetaMask() {
+async function connectWalletwithMetaMask() {
+    if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+
+        try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            window.userWalletAddress = accounts[0];
+            walletAddress.innerText = window.userWalletAddress;
+            connectWallet.innerText = 'Sign Out';
+            connectWallet.removeEventListener('click', connectWalletwithMetaMask);
+            connectWallet.addEventListener('click', signOutOfMetaMask);
+            loadPastTransactions();
+        } catch (error) {
+            console.error('Failed to connect to wallet:', error);
+        }
+    } else {
+        console.error('Web3 not available.');
+    }
+}
+
+function signOutOfMetaMask() {
     window.userWalletAddress = null;
     walletAddress.innerText = '';
     connectWallet.innerText = 'Connect Wallet';
-
     connectWallet.removeEventListener('click', signOutOfMetaMask);
-    setTimeout(() => {
-      connectWallet.addEventListener('click', connectWalletwithMetaMask);
-    }, 200);
-  }
+    connectWallet.addEventListener('click', connectWalletwithMetaMask);
+}
 
-  // Function to check the wallet balance
-  async function checkBalance() {
+async function checkBalance() {
     if (window.userWalletAddress) {
-      try {
-        const balance = await window.web3.eth.getBalance(window.userWalletAddress);
-        walletBalance.innerText = window.web3.utils.fromWei(balance, 'ether');
-      } catch (error) {
-        console.error('Failed to get wallet balance:', error);
-      }
+        try {
+            const balance = await window.web3.eth.getBalance(window.userWalletAddress);
+            walletBalance.innerText = `${window.web3.utils.fromWei(balance, 'ether')} ETH`;
+        } catch (error) {
+            console.error('Failed to get wallet balance:', error);
+        }
     }
-  }
+}
 
-  // Function to transfer funds
-  async function transferFunds() {
+async function transferFunds() {
     const recipientAddress = document.getElementById('recipientAddress').value;
     const transferAmount = document.getElementById('transferAmount').value;
 
     if (!recipientAddress || !transferAmount) {
-      return;
+        return;
     }
 
     if (window.userWalletAddress) {
-      try {
-        const transactionParameters = {
-          from: window.userWalletAddress,
-          to: recipientAddress,
-          value: window.web3.utils.toWei(transferAmount, 'ether')
-        };
+        try {
+            const gasPrice = getSelectedGasPrice();
+            const transactionParameters = {
+                from: window.userWalletAddress,
+                to: recipientAddress,
+                value: window.web3.utils.toWei(transferAmount, 'ether'),
+                gasPrice: window.web3.utils.toWei(gasPrice.price.toString(), 'gwei')
+            };
 
-        const txHash = await window.web3.eth.sendTransaction(transactionParameters);
-        
-        // Display the transaction details in the popup
-        popupAmount.innerText = `Amount: ${transferAmount} ETH`;
-        popupTxId.innerText = `Transaction ID: ${txHash}`;
-        popup.style.display = 'block';
-      } catch (error) {
-        document.getElementById('transferStatus').innerText = `Error: ${error.message}`;
-      }
-    } else {
-      console.error('Wallet not connected.');
-    }
-  }
+            const txHash = await window.web3.eth.sendTransaction(transactionParameters);
 
-  // Function to close the popup
-  function closePopup() {
-    popup.style.display = 'none';
-  }
-
-  // Event listener when the DOM content is loaded to check if MetaMask is installed
-  window.addEventListener('DOMContentLoaded', () => {
-    connectWallet.addEventListener('click', connectWalletwithMetaMask);
-    checkBalance();
-
-    // Add event listeners to the buttons
-    document.getElementById('checkBalanceBtn').addEventListener('click', checkBalance);
-    document.getElementById('transferFundsBtn').addEventListener('click', transferFunds);
-    document.getElementById('closePopupBtn').addEventListener('click', closePopup);
-  });
-
-  // Function to transfer funds
-        async function transferFunds() {
-          const recipientAddress = document.getElementById('recipientAddress').value;
-          const transferAmount = document.getElementById('transferAmount').value;
-
-          if (!recipientAddress || !transferAmount) {
-            return;
-          }
-
-          const transactionParameters = {
-            from: window.userWalletAddress,
-            to: recipientAddress,
-            value: '0x' + (parseInt(transferAmount * Math.pow(10, 18)).toString(16))
-          };
-
-          try {
-            const txHash = await window.ethereum.request({
-              method: 'eth_sendTransaction',
-              params: [transactionParameters]
-            });
-            // Display the transaction details in the popup
-            popupAmount.innerText = `Amount: ${transferAmount}`;
-            popupTxId.innerText = `Transaction ID: ${txHash}`;
+            popupAmount.innerText = `Amount: ${transferAmount} ETH`;
+            popupTxId.innerText = `Transaction ID: ${txHash.transactionHash}`;
             popup.style.display = 'block';
-          } catch (error) {
-            document.getElementById('transferStatus').innerText = `Error: ${error.message}`;
-          }
+        } catch (error) {
+            document.getElementById('transferStatus').innerText = `Transaction failed. ${error.message}`;
         }
+    }
+}
 
-   function copyTxId() {
-    const txId = popupTxId.innerText;
-    navigator.clipboard.writeText(txId)
-      .then(() => {
-        alert('Transaction ID copied to clipboard!');
-      })
-      .catch((error) => {
-        console.error('Failed to copy transaction ID:', error);
-      });
-  }
-</script>
+function getSelectedGasPrice() {
+    const selectedOption = document.querySelector('input[name="gasFee"]:checked').value;
+    return gasPrices[selectedOption];
+}
 
-    </center>
+async function updateFeeDetails() {
+    await fetchGasPrices();
+
+    const gasPrice = getSelectedGasPrice();
+    const estimatedGas = parseFloat(gasEstimate.innerText.split(' ')[0]);
+
+    if (isNaN(estimatedGas)) {
+        feeSpeed.innerText = '--';
+        feeCost.innerText = '--';
+        return;
+    }
+
+    const gasPriceInWei = window.web3.utils.toWei(gasPrice.price.toString(), 'gwei');
+    
+    const totalCostInWei = gasPriceInWei * estimatedGas;
+    
+    const totalCostInEth = window.web3.utils.fromWei(totalCostInWei.toString(), 'ether');
+    
+    feeSpeed.innerText = gasPrice.speed;
+    feeCost.innerText = `${totalCostInEth} ETH`;
+}
+
+function copyTxId() {
+    navigator.clipboard.writeText(popupTxId.innerText.split(': ')[1]);
+}
+
+function closePopup() {
+    popup.style.display = 'none';
+}
+
+connectWallet.addEventListener('click', connectWalletwithMetaMask);
+
+async function estimateGas() {
+    const recipientAddress = document.getElementById('recipientAddress').value;
+    const transferAmount = document.getElementById('transferAmount').value;
+
+    if (!recipientAddress || !transferAmount) {
+        return;
+    }
+
+    if (window.userWalletAddress) {
+        try {
+            const transactionParameters = {
+                from: window.userWalletAddress,
+                to: recipientAddress,
+                value: window.web3.utils.toWei(transferAmount, 'ether')
+            };
+
+            const estimatedGas = await window.web3.eth.estimateGas(transactionParameters);
+            gasEstimate.innerText = `${estimatedGas} gas units`;
+            updateFeeDetails();
+        } catch (error) {
+            console.error('Failed to estimate gas:', error);
+            gasEstimate.innerText = '--';
+            updateFeeDetails();
+        }
+    }
+}
+
+async function loadPastTransactions() {
+    if (!window.userWalletAddress) {
+        console.warn('No wallet address available.');
+        return;
+    }
+
+    const etherscanApiKey = 'NMJBX9W6W49S8CP32XP1X8INE3TDXCJ7C9';
+    const address = window.userWalletAddress;
+    const url = `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${etherscanApiKey}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        console.log('API Response:', data);
+
+        if (data.status === '1') {
+            if (data.result.length > 0) {
+                transactionList.innerHTML = '';
+
+                const table = document.createElement('table');
+                table.className = 'transaction-table';
+                table.innerHTML = `
+                    <tr>
+                        <th>TxHash</th>
+                        <th>Block</th>
+                        <th>Amount (ETH)</th>
+                        <th>To</th>
+                        <th>Status</th>
+                    </tr>
+                `;
+
+                data.result.forEach((tx) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${tx.hash}</td>
+                        <td>${tx.blockNumber}</td>
+                        <td>${window.web3.utils.fromWei(tx.value, 'ether')}</td>
+                        <td>${tx.to}</td>
+                        <td>${tx.isError === '0' ? 'Success' : 'Failed'}</td>
+                    `;
+                    table.appendChild(row);
+                });
+
+                transactionList.appendChild(table);
+            } else {
+                transactionList.innerHTML = '<p>No transactions found for this address.</p>';
+                console.info('No transactions found for address:', address);
+            }
+        } else {
+            console.error('Error fetching transactions:', data.message || 'Unknown error');
+            transactionList.innerHTML = `<p>Error: ${data.message || 'Unknown error'}</p>`;
+        }
+    } catch (error) {
+        console.error('Failed to load transactions:', error);
+        transactionList.innerHTML = '<p>Failed to load transactions.</p>';
+    }
+}
+
+
+document.getElementById('transferAmount').addEventListener('input', estimateGas);
+
+document.querySelectorAll('input[name="gasFee"]').forEach(radio => {
+    radio.addEventListener('change', updateFeeDetails);
+});
+
+fetchGasPrices();
+
+    </script>
   </body>
 </html>

@@ -45,7 +45,8 @@ Follow the steps below to set up the project locally:
    flask run
    ```
 
-   The application will be available at `http://127.0.0.1:5000/`.
+**Deployement**
+   The application will be available at `https://lakshya1509.pythonanywhere.com/`.
 
 ## Usage
 

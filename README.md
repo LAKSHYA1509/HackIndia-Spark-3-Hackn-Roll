@@ -78,6 +78,3 @@ This project was developed during the HackIndia Spark 3 Hackn' Roll event. Speci
 
 If you have any questions or suggestions, feel free to reach out to us via the GitHub repository.
 
-```
-
-This `README.md` provides an overview of the project, installation instructions, and basic usage guidelines. You can adjust the content based on your specific needs.

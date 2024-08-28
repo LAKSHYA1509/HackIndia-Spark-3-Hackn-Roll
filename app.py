@@ -24,3 +24,7 @@ def army():
 @app.route("/kitchen")
 def kitchen():
     return render_template('elements.html')
+
+@app.route("/bot")
+def bot():
+    return render_template('chatbot.html')

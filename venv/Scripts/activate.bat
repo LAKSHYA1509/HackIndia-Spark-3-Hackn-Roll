@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\laksh\.vscode\web3\Blockchain-based-Charity-Donation-Platform\venv
+set VIRTUAL_ENV=C:\Users\laksh\OneDrive\Documents\GitHub\HackIndia-Spark-3-Hackn-Roll\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

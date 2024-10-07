@@ -2,254 +2,236 @@
 <html>
 
 <head>
-	<title>Sankalp</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
-	<noscript>
-		<link rel="stylesheet" href="static/assets/css/noscript.css" />
-	</noscript>
+    <title>Sankalp</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+    <noscript>
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}" />
+    </noscript>
 </head>
 
 <body class="is-preload">
-	<!-- Header -->
-	
-	<!-- Wrapper -->
-	<div id="wrapper" class="fade-in">
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
 
-		<!-- Intro -->
-		<div id="intro">
-			<h1>IT TAKES A LITTLE<br />
-				TO BE HUMAN</h1>
-			<p>The stats could be disturbing but these facts are the only thing that can help you understand the
-				importance to lend a little<br />
-				<a href="https://html5up.net/license"></a>
-			</p>
-			<ul class="actions">
-				<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-			</ul>
-		</div>
+        <!-- Intro -->
+        <div id="intro">
+            <h1>IT TAKES A LITTLE<br /> TO BE HUMAN</h1>
+            <p>The stats could be disturbing but these facts are the only thing that can help you understand the importance to lend a little<br /></p>
+            <button class="primary" onclick="window.dialog.showModal();">IMPORTANT ANNOUNCEMENTS!!!!</button>
 
-		<!-- Header -->
-		<header id="header">
-			<a href="{{ url_for('payment') }}" class="logo" target="_blank" rel="noopener">Ready to help now</a>
-		</header>
+            <dialog id="dialog">
+                <h2>Hello.</h2>
+                <p><span> We are glad to announce launch of our projects under the Umbrella</span> Sankalp..</p>
+				<ol>
+					<li><a target="_blank" href="http://example.com/SamyaKaran">SamyaKaran</a> - Wallet transactions visualizer with samvid which enables to check blacklisted wallets.</li>
+					<li><a target="_blank" href="https://dhairya-0209.github.io/CharityReviews/">SatyaSachita</a> - Decentralized based blockchain reviews and ratings system.</li>
+					<li><a target="_blank" href="https://komal-bhardwaj.github.io/Mapmitra/">MapMitra</a> - Extensive AI/ML map based simulation model to enable people to provide transactions in all spaces.</li>
 
-		<!-- Nav -->
-		<nav id="nav">
-			<ul class="links">
-				<li class="active"><a href="home.html">Sankalp start</a></li>
-				<li><a href="{{ url_for('army') }}" rel="noopener">For our Army</a></li>
-				<li><a href="{{ url_for('kitchen') }}" rel="noopener">For the community kitchens</a></li>
-				<li><a href="{{ url_for('map') }}" rel="noopener">View Map</a>
-				<li><a href="{{ url_for('bot') }}" rel="noopener">View Chatbot</a>
-			</ul>
-			<ul class="icons">
-				<li><a href="https://twitter.com/LAKSHYA150903" target="blank" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="https://www.instagram.com/lakshaybhardwaj150903/" target="_blank" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a>
-							</li>
-							<li><a href="https://github.com/lAKSHYA1509" target="blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-			</ul>
-		</nav>
+				</ol>
+                <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+            </dialog>
 
-		<!-- Main -->
-		<div id="main">
+            <ul class="actions">
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+            </ul>
+        </div>
 
-			<!-- Featured Post -->
-			<article class="post featured">
-				<header class="major">
-					<span class="date">August 27, 2024</span>
-					<h2><a href="#">Sankalp is not just a thought<br />
-							It's a promise for a better tomorrow</a></h2>
-					<p>With a smart transaction system based in ethereum, We are creating Web3 for good and generosity
-						around us<br />
-						It takes a small step for creating a safe tomorrow for someone<br />
-					</p>
-				</header>
-				<a href="#" class="image main">
-					<video src="{{ url_for('static', filename='videos/Home_video.mp4') }}" autoplay controls muted
-						class="hidden-video" width="800" height="700">
-						Your browser does not support the video tag.
-					</video>
-				</a>
-				<ul class="actions special">
-					<li><a href="#" class="button large">Full Story</a></li>
-				</ul>
-			</article>
+        <!-- Header -->
+        <header id="header">
+            <a href="{{ url_for('payment') }}" class="logo" target="_blank" rel="noopener">Ready to help now</a>
+        </header>
 
-			<!-- Posts -->
-			<section class="posts">
-				<article>
-					<header>
-						<span class="date">Feb 27, 2023</span>
-						<h2><a href="#">Stuffed Granaries and Empty Stomachs<br />
-							Hunger in India</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="https://blogsmedia.lse.ac.uk/blogs.dir/35/files/2023/02/david-talukdar-3WyrrPLAruM-unsplash.jpg" alt="photo1" /></a>
-					<p>According to the UN’s Food and Agricultural Organisation (FAO) ‘The State of Food Security and Nutrition in the World, 2022 Report’, 224.3 million people, or 16 per cent of India’s population, are undernourished with 53 per cent of reproductive-age women also being anemic.</p>
-					<ul class="actions special">
-						<li><a href="https://blogs.lse.ac.uk/southasia/2023/02/27/stuffed-granaries-and-empty-stomachs-hunger-in-india/#:~:text=According%20to%20the%20UN's%20Food,age%20women%20also%20being%20anemic." target="_blank" class="button">Full Story</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<span class="date">July 21, 2023</span>
-						<h2><a href="#">India’s triumphs over poverty<br />
-							marred by an alarming hunger crisis</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="https://fl-i.thgim.com/public/incoming/s5iqm1/article67102059.ece/alternates/LANDSCAPE_1200/image.jfif" alt="" /></a>
-					<p>The NITI Aayog report shows 13.5 crore escaped poverty, but 74.1 per cent of Indians struggle to afford healthy food.
-					</p>
-					<ul class="actions special">
-						<li><a href="https://frontline.thehindu.com/news/indias-triumphs-over-poverty-marred-by-an-alarming-hunger-crisis-as-niti-aayog-report-finds-that-majority-of-the-population-cannot-afford-healthy-food/article67101938.ece" target="_blank" class="button">Full Story</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<span class="date">January 30, 2024</span>
-						<h2><a href="#">The lack of education<br />
-								Alarming states of india</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="https://www.skvgwalior.org/blog/wp-content/uploads/2024/01/Lack-of-education-causes-poverty-800x445.jpg" alt="" /></a>
-					<p>Lack of education causes poverty by limiting employment opportunities, giving consistently low or no income, increasing health issues and leaving very little financial aid for the rescue.</p>
-					<ul class="actions special">
-						<li><a href="https://www.skvgwalior.org/blog/lack-of-education-causes-poverty/" target="_blank" class="button">Full Story</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<span class="date">Jan 19, 2022</span>
-						<h2><a href="#">Community Kitchens<br />
-								are the only save</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="https://static.toiimg.com/thumb/msid-88983384,imgsize-33238,width-400,resizemode-4/88983384.jpg" alt="" /></a>
-					<p>Hunger has to be satiated. It is the duty of the government to provide food to the section of the population that stays hungry. Community kitchens need to be spread far and wide, into the rural areas</p>
-					<ul class="actions special">
-						<li><a href="https://timesofindia.indiatimes.com/india/open-community-kitchens-end-hunger-sc-tells-centre/articleshow/88983346.cms" target="_blank" class="button">Full Story</a></li>
-					</ul>
-				</article>
-			</section>
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li class="active"><a href="home.html">Sankalp start</a></li>
+                <li><a href="{{ url_for('army') }}" rel="noopener">For our Army</a></li>
+                <li><a href="{{ url_for('kitchen') }}" rel="noopener">For the community kitchens</a></li>
+                <li><a href="{{ url_for('map') }}" rel="noopener">View Map</a></li>
+                <li><a href="{{ url_for('bot') }}" rel="noopener">View Chatbot</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="https://twitter.com/LAKSHYA150903" target="_blank" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="https://www.instagram.com/lakshaybhardwaj150903/" target="_blank" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="https://github.com/lAKSHYA1509" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+            </ul>
+        </nav>
 
+        <!-- Main -->
+        <div id="main">
 
+            <!-- Featured Post -->
+            <article class="post featured">
+                <header class="major">
+                    <span class="date">August 27, 2024</span>
+                    <h2><a href="#">Sankalp is not just a thought<br />It's a promise for a better tomorrow</a></h2>
+                    <p>With a smart transaction system based in ethereum, we are creating Web3 for good and generosity around us.<br />It takes a small step for creating a safe tomorrow for someone.<br /></p>
+                </header>
+                <a href="#" class="image main">
+                    <video src="{{ url_for('static', filename='videos/Home_video.mp4') }}" autoplay controls muted class="hidden-video" width="800" height="700">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+                <ul class="actions special">
+                    <li><a href="#" class="button large">Full Story</a></li>
+                </ul>
+            </article>
 
-			<div class="our-team section" id="team">
-				<h1 class="transformed-text underline">BRAINS BEHIND IT</h1>
-				<div class="team-members">
+            <!-- Posts -->
+            <section class="posts">
+                <article>
+                    <header>
+                        <span class="date">Feb 27, 2023</span>
+                        <h2><a href="#">Stuffed Granaries and Empty Stomachs<br />Hunger in India</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="https://blogsmedia.lse.ac.uk/blogs.dir/35/files/2023/02/david-talukdar-3WyrrPLAruM-unsplash.jpg" alt="photo1" /></a>
+                    <p>According to the UN’s Food and Agricultural Organisation (FAO) ‘The State of Food Security and Nutrition in the World, 2022 Report’, 224.3 million people, or 16 percent of India’s population, are undernourished with 53 percent of reproductive-age women also being anemic.</p>
+                    <ul class="actions special">
+                        <li><a href="https://blogs.lse.ac.uk/southasia/2023/02/27/stuffed-granaries-and-empty-stomachs-hunger-in-india/#:~:text=According%20to%20the%20UN's%20Food,age%20women%20also%20being%20anemic." target="_blank" class="button">Full Story</a></li>
+                    </ul>
+                </article>
+                <article>
+                    <header>
+                        <span class="date">July 21, 2023</span>
+                        <h2><a href="#">India’s triumphs over poverty<br />marred by an alarming hunger crisis</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="https://fl-i.thgim.com/public/incoming/s5iqm1/article67102059.ece/alternates/LANDSCAPE_1200/image.jfif" alt="" /></a>
+                    <p>The NITI Aayog report shows 13.5 crore escaped poverty, but 74.1 percent of Indians struggle to afford healthy food.</p>
+                    <ul class="actions special">
+                        <li><a href="https://frontline.thehindu.com/news/indias-triumphs-over-poverty-marred-by-an-alarming-hunger-crisis-as-niti-aayog-report-finds-that-majority-of-the-population-cannot-afford-healthy-food/article67101938.ece" target="_blank" class="button">Full Story</a></li>
+                    </ul>
+                </article>
+                <article>
+                    <header>
+                        <span class="date">January 30, 2024</span>
+                        <h2><a href="#">The lack of education<br />Alarming states of India</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="https://www.skvgwalior.org/blog/wp-content/uploads/2024/01/Lack-of-education-causes-poverty-800x445.jpg" alt="" /></a>
+                    <p>Lack of education causes poverty by limiting employment opportunities, giving consistently low or no income, increasing health issues, and leaving very little financial aid for the rescue.</p>
+                    <ul class="actions special">
+                        <li><a href="https://www.skvgwalior.org/blog/lack-of-education-causes-poverty/" target="_blank" class="button">Full Story</a></li>
+                    </ul>
+                </article>
+                <article>
+                    <header>
+                        <span class="date">Jan 19, 2022</span>
+                        <h2><a href="#">Community Kitchens<br />are the only save</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="https://static.toiimg.com/thumb/msid-88983384,imgsize-33238,width-400,resizemode-4/88983384.jpg" alt="" /></a>
+                    <p>Hunger has to be satiated. It is the duty of the government to provide food to the section of the population that stays hungry. Community kitchens need to be spread far and wide, into the rural areas.</p>
+                    <ul class="actions special">
+                        <li><a href="https://timesofindia.indiatimes.com/india/open-community-kitchens-end-hunger-sc-tells-centre/articleshow/88983346.cms" target="_blank" class="button">Full Story</a></li>
+                    </ul>
+                </article>
+            </section>
 
-					<div class="img-card up transformed">
-						<img src="{{ url_for('static', filename='images/lakshya.jpg') }}" alt="Lakshya Bhardwaj"
-							class="team-image">
-						<div class="text">
-							<h3><b>Lakshya Bhardwaj</b></h3>
-						</div>
-						<div class="designation">
-							<h6>Java Full stack dev<br>Web3 Enthusiast<br></h6>
-						</div>
-					</div>
-					<div class="img-card up transformed">
-						<img src="{{ url_for('static', filename='images/diya.jpg') }}" alt="Diya Guglani"
-							class="team-image">
-						<div class="text">
-							<h3><b>Diya Guglani</b></h3>
-						</div>
-						<div class="designation">
-							<h6>Strategist<br>Edtech Analyst<br>Python Dev</h6>
-						</div>
-					</div>
-					<div class="img-card transformed">
-						<img src="{{ url_for('static', filename='images/komal.jpg') }}" alt="Komal" class="team-image">
-						<div class="text">
-							<h3><b>Komal</b></h3>
-						</div>
-						<div class="designation">
-							<h6>Strategist<br>Lead<br>AI developer</h6>
-						</div>
-					</div>
-					<div class="img-card transformed">
-						<img src="{{ url_for('static', filename='images/dhairya.jpg') }}" alt="Dhairya Bhatia"
-							class="team-image">
-						<div class="text">
-							<h3><b>Dhairya Bhatia</b></h3>
-						</div>
-						<div class="designation">
-							<h6>Strategist<br>Designer<br>Frontend Dev</h6>
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="our-team section" id="team">
+                <h1 class="transformed-text underline">BRAINS BEHIND IT</h1>
+                <div class="team-members">
+                    <div class="img-card up transformed">
+                        <img src="{{ url_for('static', filename='images/lakshya.jpg') }}" alt="Lakshya Bhardwaj" class="team-image">
+                        <div class="text">                            <h3><b>Lakshya Bhardwaj</b></h3>
+                        </div>
+                        <div class="designation">
+                            <h6>Java Full stack dev<br>Web3 Enthusiast<br></h6>
+                        </div>
+                    </div>
+                    <div class="img-card up transformed">
+                        <img src="{{ url_for('static', filename='images/diya.jpg') }}" alt="Diya Guglani" class="team-image">
+                        <div class="text">
+                            <h3><b>Diya Guglani</b></h3>
+                        </div>
+                        <div class="designation">
+                            <h6>Strategist<br>Edtech Analyst<br>Python Dev</h6>
+                        </div>
+                    </div>
+                    <div class="img-card transformed">
+                        <img src="{{ url_for('static', filename='images/komal.jpg') }}" alt="Komal" class="team-image">
+                        <div class="text">
+                            <h3><b>Komal</b></h3>
+                        </div>
+                        <div class="designation">
+                            <h6>Strategist<br>Lead<br>AI Developer</h6>
+                        </div>
+                    </div>
+                    <div class="img-card transformed">
+                        <img src="{{ url_for('static', filename='images/dhairya.jpg') }}" alt="Dhairya Bhatia" class="team-image">
+                        <div class="text">
+                            <h3><b>Dhairya Bhatia</b></h3>
+                        </div>
+                        <div class="designation">
+                            <h6>Strategist<br>Designer<br>Frontend Dev</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Footer -->
+            <footer id="footer">
+                <section>
+                    <form method="post" action="#">
+                        <div class="fields">
+                            <div class="field">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" />
+                            </div>
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" id="email" />
+                            </div>
+                            <div class="field">
+                                <label for="message">Message</label>
+                                <textarea name="message" id="message" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Send Message" /></li>
+                        </ul>
+                    </form>
+                </section>
+                <section class="split contact">
+                    <section class="alt">
+                        <h3>Address</h3>
+                        <p>Sector-3, Faridabad<br />Haryana, 9319704071</p>
+                    </section>
+                    <section>
+                        <h3>Phone</h3>
+                        <p><a href="#">9319704071</a></p>
+                    </section>
+                    <section>
+                        <h3>Email</h3>
+                        <p><a href="mailto:lakshyabhardwaj200315@gmail.com">lakshyabhardwaj200315@gmail.com</a></p>
+                    </section>
+                    <section>
+                        <h3>Social</h3>
+                        <ul class="icons alt">
+                            <li><a href="https://twitter.com/LAKSHYA150903" target="_blank" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="https://www.instagram.com/lakshaybhardwaj150903/" target="_blank" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="https://github.com/lAKSHYA1509" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                        </ul>
+                    </section>
+                </section>
+            </footer>
 
+            <!-- Copyright -->
+            <footer>
+                <p>&copy; 2024 Sankalp. All rights reserved.</p>
+            </footer>
+        </div>
 
-			<!-- Footer -->
-			<footer>
+    </div>
 
-			</footer>
-
-		</div>
-
-		<!-- Footer -->
-		<footer id="footer">
-			<section>
-				<form method="post" action="#">
-					<div class="fields">
-						<div class="field">
-							<label for="name">Name</label>
-							<input type="text" name="name" id="name" />
-						</div>
-						<div class="field">
-							<label for="email">Email</label>
-							<input type="text" name="email" id="email" />
-						</div>
-						<div class="field">
-							<label for="message">Message</label>
-							<textarea name="message" id="message" rows="3"></textarea>
-						</div>
-					</div>
-					<ul class="actions">
-						<li><input type="submit" value="Send Message" /></li>
-					</ul>
-				</form>
-			</section>
-			<section class="split contact">
-				<section class="alt">
-					<h3>Address</h3>
-					<p>Sector-3, Faridabad<br />
-						Haryana, 9319704071</p>
-				</section>
-				<section>
-					<h3>Phone</h3>
-					<p><a href="#">9319704071</a></p>
-				</section>
-				<section>
-					<h3>Email</h3>
-					<p><a href="#">lakshyabhardwaj200315@gmail.com</a></p>
-				</section>
-				<section>
-					<h3>Social</h3>
-					<ul class="icons alt">
-						<li><a href="https://twitter.com/LAKSHYA150903" target="blank" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://www.instagram.com/lakshaybhardwaj150903/" target="_blank" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a>
-						</li>
-						<li><a href="https://github.com/lAKSHYA1509" target="blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-					</ul>
-				</section>
-			</section>
-		</footer>
-
-		<!-- Copyright -->
-		
-
-	</div>
-
-	<!-- Scripts -->
-	<script src="static/assets/js/jquery.min.js"></script>
-	<script src="static/assets/js/jquery.scrollex.min.js"></script>
-	<script src="static/assets/js/jquery.scrolly.min.js"></script>
-	<script src="static/assets/js/browser.min.js"></script>
-	<script src="static/assets/js/breakpoints.min.js"></script>
-	<script src="static/assets/js/util.js"></script>
-	<script src="static/assets/js/main.js"></script>
-
+    <!-- Scripts -->
+    <script src="static/assets/js/jquery.min.js"></script>
+    <script src="static/assets/js/jquery.scrollex.min.js"></script>
+    <script src="static/assets/js/jquery.scrolly.min.js"></script>
+    <script src="static/assets/js/browser.min.js"></script>
+    <script src="static/assets/js/breakpoints.min.js"></script>
+    <script src="static/assets/js/util.js"></script>
+    <script src="static/assets/js/main.js"></script>
 </body>
 
 </html>
+
